@@ -3,8 +3,9 @@
 *LinkedIn : https://www.linkedin.com/in/nimish-shandilya-0a429b22b
 *
 *Problem : Valid Parentheses
-*Problem Source : LeetCode
+*Problem Source : LeetCode,Geeks For Geeks
 *Problem Link : https://leetcode.com/problems/valid-parentheses/
+*Problem Link : https://practice.geeksforgeeks.org/problems/parenthesis-checker2744/
 * 
 */
 
