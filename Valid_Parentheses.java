@@ -16,7 +16,6 @@ class Valid_Parentheses {
         for(int i=0;i<s.length();i++){
             if(s.charAt(i)=='{'||s.charAt(i)=='('||s.charAt(i)=='['){
                 arr.add(s.charAt(i));
-                System.out.print(1);
             }
             else{
                 char c;
@@ -28,10 +27,8 @@ class Valid_Parentheses {
                 c='[';
                 if(arr.size()!=0 && arr.get(arr.size()-1)==c){
                     arr.remove(arr.size()-1);
-                    System.out.print(2);
                 }
                 else{
-                    System.out.print(3);
                     return false;
                 }
             }
