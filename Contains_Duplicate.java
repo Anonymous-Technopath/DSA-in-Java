@@ -1,0 +1,22 @@
+/*
+*Solution By : Nimish Shandilya
+*LinkedIn : https://www.linkedin.com/in/nimish-shandilya-0a429b22b
+*
+*Problem : Contains Duplicate
+*Problem Source : Leet Code
+*Problem Link : https://leetcode.com/problems/contains-duplicate/
+* 
+*/
+
+class Contains_Duplicate {
+    public boolean containsDuplicate(int[] nums) {
+        HashSet<Integer> hs=new HashSet<>();
+        for(int i=0;i<nums.length;i++){
+            if(hs.contains(nums[i])){
+                return true;
+            }
+            hs.add(nums[i]);
+        }
+        return false;
+    }
+}
