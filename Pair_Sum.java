@@ -13,46 +13,38 @@ import java.io.*;
 import java.util.* ;
 import java.io.*;
 public class Pair_Sum{
-    public static List<int[]> pairSum(int[] arr, int k) {
-        ArrayList<int[]> sol=new ArrayList<int[]>();
-        HashMap<Integer,Integer> hs=new HashMap<Integer,Integer>();
-        ArrayList<Integer> s=new ArrayList<Integer>();
-        int n=arr.length;
-        for(int i=0;i<n;i++){
-            if(!hs.containsKey(arr[i])){
-                hs.put(arr[i],1);
-            }else{
+    public static List<int[]> pairSum(int[] arr, int s) {
+        // Write your code here.
+        List<int[]> sol=new ArrayList<>();
+        HashMap<Integer,Integer> hs=new HashMap<>();
+        ArrayList<Integer> num=new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            if(hs.containsKey(arr[i])){
                 hs.put(arr[i],hs.get(arr[i])+1);
+            }else{
+                hs.put(arr[i],1);
+                num.add(arr[i]);
             }
-            if(!s.contains(arr[i]))
-            s.add(arr[i]);
         }
-        Collections.sort(s);
-        for(int i=0;i<s.size();i++){
-            int x=s.get(i);
-            if(s.contains(k-x)&& x!=k-x){
-                for(int j=0;j<hs.get(x)*hs.get(k-x);j++){
-                    int a[]=new int[2];
-                    a[0]=x;
-                    a[1]=k-x;
-                    sol.add(a);
+        for(int i=0;i<num.size();i++){
+            if(num.contains(s-num.get(i))){
+                int x=hs.get(num.get(i))*hs.get(s-num.get(i));
+                if(num.get(i)==s-num.get(i)){
+                    x=hs.get(num.get(i))*(hs.get(num.get(i))-1)/2;
                 }
-                s.remove(i);
-                s.remove(s.indexOf(k-x));
-                i--;
-            }
-            else if(x==k-x){
-                if(hs.get(x)>1){
-                    //Unique pairs=n*(n-1)/2
-                    for(int j=0;j<(hs.get(x))*(hs.get(x)-1)/2;j++){
-                    int a[]=new int[2];
-                    a[0]=x;
-                    a[1]=x;
-                    sol.add(a);
-                    }
+                hs.put(num.get(i),0);
+                hs.put(s-num.get(i),0);
+                for(int j=0;j<x;j++){
+                    sol.add(new int[]{Math.min(num.get(i),s-num.get(i)),Math.max(num.get(i),s-num.get(i))});
                 }
             }
         }
+        Collections.sort(sol,new Comparator<int[]>() {
+            @Override
+            public int compare(int[] a,int[] b){
+                return a[0]-b[0];
+            }
+        });
         return sol;
     }
 }
