@@ -2,7 +2,7 @@
 *Solution By : Nimish Shandilya
 *LinkedIn : https://www.linkedin.com/in/nimish-shandilya-0a429b22b
 *
-*Problem : Majority Element - II
+*Problem : Majority_Element_II
 *Problem Source : Coding Ninjas
 *Problem Link : https://www.codingninjas.com/codestudio/problems/majority-element-ii_893027
 * 
