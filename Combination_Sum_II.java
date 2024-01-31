@@ -11,44 +11,30 @@ import java.util.*;
 
 public class Combination_Sum_II
 {
-    public static void rec(ArrayList<Integer> arr,int i,int sum,int k,ArrayList<Integer> result,HashSet<ArrayList<Integer>> hs){
-        if(i==arr.size()||sum>=k){
+    public static void rec(ArrayList<Integer> arr,int j, int k,ArrayList<ArrayList<Integer>> sol,ArrayList<Integer> ans){
+        if(k==0){
+            sol.add(new ArrayList<>(ans));
             return;
         }
-        rec(arr,i+1,sum,k,result,hs);
-        ArrayList<Integer> temp=(ArrayList)result.clone();
-        temp.add(arr.get(i));
-        if(sum+arr.get(i)==k){
-            hs.add(temp);
+        for(int i=j;i<arr.size();i++){
+            if(i!=j && arr.get(i)==arr.get(i-1)){
+                continue;
+            }
+            if(arr.get(i)>k){
+                break;
+            }
+            ans.add(arr.get(i));
+            rec(arr,i+1,k-arr.get(i),sol,ans);
+            ans.remove(ans.size()-1);
         }
-        rec(arr,i+1,sum+arr.get(i),k,temp,hs);
-        
     }
     public static ArrayList<ArrayList<Integer>> combinationSum2(ArrayList<Integer> arr, int n, int k)
     {
         //    Write your code here.
-        if(k==0){
-            ArrayList<Integer> temp=new ArrayList<>();
-            ArrayList<ArrayList<Integer>> sol=new ArrayList<>();
-            sol.add(temp);
-            return sol;
-        }
-        HashSet<ArrayList<Integer>> hs=new HashSet<>();
+        ArrayList<ArrayList<Integer>> sol=new ArrayList<>();
         Collections.sort(arr);
-        rec(arr,0,0,k,new ArrayList<>(),hs);
-        ArrayList<ArrayList<Integer>> sol= new ArrayList<>(hs);
-        Collections.sort(sol,new Comparator<ArrayList<Integer>>(){
-            public int compare(ArrayList<Integer> a,ArrayList<Integer> b){
-                int min=Math.min(a.size(),b.size());
-                for(int i=0;i<min;i++){
-                    int x=a.get(i)-b.get(i);
-                    if(x!=0){
-                        return x;
-                    }
-                }
-                return a.size()-b.size();
-            }
-        });
+        rec(arr,0,k,sol,new ArrayList<>());
         return sol;
+
     }
 }
