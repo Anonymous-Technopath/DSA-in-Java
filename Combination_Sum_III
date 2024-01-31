@@ -1,0 +1,39 @@
+/*
+*Solution By : Nimish Shandilya
+*LinkedIn : https://www.linkedin.com/in/nimish-shandilya-0a429b22b
+*
+*Problem : Combination Sum III
+*Problem Source : Coding Ninjas
+* 
+*/
+
+import java.util.* ;
+import java.io.*; 
+
+public class Combination_Sum_III {
+
+    public static void rec(int j,int k,int n,ArrayList<ArrayList<Integer>> sol,ArrayList<Integer> ans){
+        if(n==0 &&k==0){
+            sol.add(new ArrayList<>(ans));
+            return;
+        }
+        if(k<=0){
+            return;
+        }
+        for(int i=j;i<=9;i++){
+            if(n<i){
+                break;
+            }
+            ans.add(i);
+            rec(i+1,k-1,n-i,sol,ans);
+            ans.remove(ans.size()-1);
+        }
+    }
+    static ArrayList<ArrayList<Integer>> combinationSum3(int k, int n) {
+        // Write your code here.
+        ArrayList<ArrayList<Integer>> sol=new ArrayList<>();
+        rec(1,k,n,sol,new ArrayList<>());
+        return sol;
+
+    }
+}
