@@ -41,4 +41,35 @@ class Trapping_Rain_Water{
         }
         return sum;
     } 
+
+    // USING STACK
+    
+    // public static long getTrappedWater(long []arr, int n) {
+    //     // Write your code here.
+    //     Stack<Long> s=new Stack<>();
+    //     s.push(arr[0]);
+    //     long max=arr[0],sum=0;
+    //     for(int i=1;i<n;i++){
+    //         if(arr[i]>=max){
+    //             while(s.peek()!=max){
+    //                 sum+=(max-s.pop());
+    //             }
+    //             s.pop();
+    //             s.push(arr[i]);
+    //             max=arr[i];
+    //         }else{
+    //             s.push(arr[i]);
+    //         }
+    //     }
+    //     max=s.pop();
+    //     while(!s.isEmpty()){
+    //         if(s.peek()>=max){
+    //             max=s.pop();
+    //         }else{
+    //             sum+=(max-s.pop());
+    //         }
+    //     }
+    //     return sum;
+
+    // }
 }
